@@ -14,7 +14,6 @@ def update_tasks():
 def clear_listbox():
     lb_tasks.delete(0, "end")
 
-
 def add_task():
     label_dsply["text"] = ""
     Ntask = text_input.get()
@@ -74,11 +73,6 @@ def save_act():
                 filehandle.write('%s\n' % listitem)
     else:
         pass
-
-
-def load_info():
-    messagebox.showinfo(
-        "info", "this is Todolist V.1.0 \n created by FAIZAR RAHMAN \n Python Project",)
 
 
 def load_act():
@@ -173,9 +167,6 @@ load_button = tkinter.Button(
     root, text="Load LastTodolist", bg="white", width=15, command=load_act)
 load_button.grid(row=10, column=0)
 
-info_button = tkinter.Button(
-    root, text="info", bg="white", width=15, command=load_info)
-info_button.grid(row=11, column=0, columnspan=2)
 
 lb_tasks = tkinter.Listbox(root)
 lb_tasks.grid(row=2, column=1, rowspan=7)

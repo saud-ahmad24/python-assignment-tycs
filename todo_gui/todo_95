@@ -1,0 +1,13 @@
+import tkinter
+import random
+from tkinter import messagebox
+
+root = tkinter.Tk()
+root.configure(bg="#A5A5B3")
+root.title("Todo List")
+root.geometry("600x450")
+
+
+
+
+root.mainloop()
