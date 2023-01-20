@@ -1,0 +1,422 @@
+/* 
+   Name - Shah Saud Ahmad
+   Class - TYCS Sem - 6
+   Div - A
+   Enrollment - E20110192000310095
+   Subject - Java Applet Programming
+   Aim - Cursor Pointer of Mouse
+
+
+*/
+
+
+import java.applet.Applet;
+import java.awt.event.*;
+import java.awt.*;
+
+
+public class Cursor_pointer extends Applet implements MouseMotionListener
+{
+    int a,b;
+    
+    @Override
+    public void init()
+    {
+        addMouseMotionListener(this);
+    }
+    
+    @Override
+    public void mouseDragged(MouseEvent ev)
+    {
+        a=ev.getX();
+        b=ev.getY();
+        repaint();        
+    }
+    
+    @Override
+    public void mouseMoved(MouseEvent ev)
+    {
+        a=ev.getX();
+        b=ev.getY();
+        repaint();
+    }
+    
+    @Override
+    public void paint(Graphics g)
+    {
+        g.fillRect(a,b,10,10);
+    }
+}
+
+
+
+
+/* 
+   Name - Shah Saud Ahmad
+   Class - TYCS Sem - 6
+   Div - A
+   Enrollment - E20110192000310095
+   Subject - Java Applet Programming
+   Aim - Write an applet which has three radio buttons, 
+         on click of any radio button perform. Rectangle,
+         Oval, Triangle
+
+
+*/
+
+
+import java.applet.Applet;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.JRadioButton.*;
+
+
+public class Shape_rbtn extends Applet implements ItemListener{
+    
+    Button btn;
+    CheckboxGroup Chkbx1;
+    Checkbox bx1,bx2,bx3;
+    
+
+    @Override
+    public void init() 
+    {
+       Chkbx1 = new CheckboxGroup();
+       bx1 = new Checkbox("Triangle",Chkbx1,false);
+       bx2 = new Checkbox("Rectangle",Chkbx1,false);
+       bx3 = new Checkbox("Oval",Chkbx1,false);
+       
+       add(bx1);
+       add(bx2);
+       add(bx3);
+       
+       bx1.addItemListener(this);
+       bx2.addItemListener(this);
+       bx3.addItemListener(this);
+    }
+    
+    @Override
+    public void itemStateChanged(ItemEvent e)
+    {
+        repaint();
+    }
+    
+    public void paint(Graphics g)
+            
+    {
+        
+        g.drawString("Click above to draw shapes", 560, 50);
+        
+        if(bx1.getState() == true)
+        {
+            g.drawLine(177,141,177,361);
+            g.drawLine(177,141,438,361);
+            g.drawLine(177,361,438,361);
+        }
+        
+        else if(bx2.getState() == true)
+        {
+            g.drawRect(570, 200, 200, 200);
+            
+        }
+        
+        else if(bx3.getState()==true){
+            g.drawOval(570,200,150,250);
+       }
+        
+    }
+
+   
+}
+
+/* 
+   Name - Shah Saud Ahmad
+   Class - TYCS Sem - 6
+   Div - A
+   Enrollment - E20110192000310095
+   Subject - Java Applet Programming
+   Aim - Create Registration form for Student.
+
+
+*/
+
+
+
+import java.applet.*;
+import java.awt.*;
+import java.awt.event.*;
+
+
+
+public class Registration_form extends Applet {
+
+    Label lname, lemail, lpass, lpno, lgen, llang, lzip, labout;
+    TextField tname, temail, tpass, tpno, tzip;
+    TextArea tabout;
+    Button regis;
+    Checkbox male,female, others;
+    Choice ch;
+     
+    public void init() {
+        
+        setLayout(new FlowLayout());
+        
+        lname = new Label("Name : ");
+        tname = new TextField(20);
+        lemail = new Label("E-Mail : ");
+        temail = new TextField(20);
+        lpass = new Label("Password : ");
+        tpass = new TextField(20);
+        lpno = new Label("Phone Number : ");
+        tpno = new TextField(10);
+        lgen = new Label("Gender : ");
+        
+        CheckboxGroup chkgrp = new CheckboxGroup();
+        male = new Checkbox("Male", chkgrp, false);
+        female = new Checkbox("Female", chkgrp, false);
+        others = new Checkbox("Others", chkgrp, false);
+        
+        llang = new Label("Language");
+        lzip = new Label("Zip Code : ");
+        tzip = new TextField(6);
+        labout = new Label("About : ");
+        tabout = new TextArea(10, 50);
+        
+        ch = new Choice();
+        ch.add("English");
+        ch.add("Gujrati");
+        ch.add("Hindi");
+        
+        regis = new Button("submit");
+        
+        add(lname);
+        add(tname);
+        add(lemail);
+        add(temail);
+        add(lpass);
+        add(tpass);
+        add(lpno);
+        add(tpno);
+        add(lgen);
+        add(male);
+        add(female);
+        add(others);
+        add(llang);
+        add(ch);
+        add(lzip);
+        add(tzip);
+        add(labout);
+        add(tabout);
+        add(regis);
+        
+    }
+
+}
+
+
+
+/* 
+   Name - Shah Saud Ahmad
+   Class - TYCS Sem - 6
+   Div - A
+   Enrollment - E20110192000310095
+   Subject - Java Applet Programming
+   Aim - Design the Applet page to calculate Simple 
+         interest and Compound interest.
+
+*/
+
+import java.applet.*;
+import java.awt.*;
+import java.awt.event.*;
+
+
+
+public class Simple_interest extends Applet implements ActionListener{
+
+    Label l1,l2,l3;
+    TextField tf1,tf2,tf3;
+    Button btn;
+    
+    public void init() {
+        
+        setLayout(new FlowLayout());
+        l1 = new Label("Principal Amount:");
+        tf1= new TextField(10);
+        add(l1); 
+        add(tf1);
+        
+        l2 = new Label("Number of years:");
+        tf2= new TextField(10);
+        add(l2); 
+        add(tf2);
+        
+        l3 = new Label("Rate of Interest:");
+        tf3= new TextField(10);
+        add(l3); 
+        add(tf3);
+        
+        btn = new Button("Calculate");
+        add(btn);
+        btn.addActionListener(this);
+    }
+    public void actionPerformed(ActionEvent e){
+
+        Graphics g = getGraphics();
+        if(e.getSource()==btn)
+        {
+           int x = Integer.parseInt(tf1.getText());
+           int y = Integer.parseInt(tf2.getText());
+           float z = Float.parseFloat(tf3.getText());
+           double a = (x*y*z)/100;
+           
+           g.drawString("Simple Interest:", 550,100);
+           g.drawString(a+"",660,100);
+        }
+        
+    }
+         
+
+    
+}
+
+
+
+
+
+
+/* 
+   Name - Shah Saud Ahmad
+   Class - TYCS Sem - 6
+   Div - A
+   Enrollment - E20110192000310095
+   Subject - Java Applet Programming
+   Aim - Draw radio
+
+*/
+
+package applet_95;
+
+import java.applet.Applet;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.ButtonGroup;
+import javax.swing.JRadioButton;
+
+/**
+ *
+ * @author srki-035
+ */
+public class draw_radio extends Applet implements ActionListener {
+    
+    Label Draw;
+    ButtonGroup Drawing = new ButtonGroup();
+    JRadioButton Triangle,Rectangle,Oval;
+    public void init() {
+        Draw = new Label("Draw");
+        Triangle = new JRadioButton("Triangle");
+        Rectangle = new JRadioButton("Rectangle");
+        Oval = new JRadioButton("Oval");
+        
+        Drawing.add(Triangle);
+        Drawing.add(Rectangle);
+        Drawing.add(Oval);
+        add(Triangle);
+        add(Rectangle);
+        add(Oval);
+//        Oval.addItemListener(this);
+        
+        
+    }
+
+    // TODO overwrite start(), stop() and destroy() methods
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        Graphics g = getGraphics();
+        if(e.getSource()==Oval){
+            g.drawOval(200, 200, 100, 100);
+           
+        }
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+}
+
+
+
+
+
+/* 
+   Name - Shah Saud Ahmad
+   Class - TYCS Sem - 6
+   Div - A
+   Enrollment - E20110192000310095
+   Subject - Java Applet Programming
+   Aim -Write a program to choose programming language
+
+*/
+
+package applet_95;
+
+import java.applet.Applet;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.applet.Applet;
+
+public class languagedropdown extends Applet implements ActionListener {
+
+    JComboBox m = new JComboBox();
+    JComboBox n = new JComboBox();
+    Label l1, l2;
+
+    public void init() {
+
+        l1 = new Label("Languages :");
+        add(l1);
+
+        m.addItem("");
+        m.addItem("JAVA");
+        m.addItem("Android");
+        m.addItem("Python");
+        m.addItem("PHP");
+        m.addItem(".NET");
+        m.addItem("RDBMS");
+        m.addActionListener(this);
+        add(m);
+
+        l2 = new Label("Students :");
+        add(l2);
+
+        n.addItem("");
+        n.addItem("Shyam");
+        n.addItem("Chandan");
+        n.addItem("Deepak");
+        n.addItem("Saud");
+        n.addItem("Shreyansh");
+        n.addItem("Akash");
+        n.addActionListener(this);
+        add(n);
+
+    }
+
+    // TODO overwrite start(), stop() and destroy() methods
+    public void actionPerformed(ActionEvent e) {
+
+        Graphics g = getGraphics();
+
+        g.drawString(String.valueOf(m.getSelectedItem() + " is Enrolled by " + String.valueOf(n.getSelectedItem())), 200, 400);
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
