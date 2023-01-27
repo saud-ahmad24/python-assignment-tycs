@@ -1,0 +1,1083 @@
+# Name- Shah Saud Ahmad
+# Div - A
+# Class - TYCS SEM 6
+# Enrollment - E20110192000310095
+# Subject - Python 2
+# Aim- Create GUI application design in python using various widgets of tkinter library
+# Assignment - 1
+# Pc no- 54
+# Faculty name - Yesha Mehta Ma'am
+
+-------------------------------------------------------------------------------------------
+
+# Name- Shah Saud Ahmad
+# Div - A
+# Class - TYCS SEM 6
+# Enrollment - E20110192000310095
+# Subject - Python 2
+# Aim- Create GUI application design in python using various widgets of tkinter library
+# Assignment - 1.1
+# Pc no- 54
+# Faculty name - Yesha Mehta Ma'am
+
+
+from tkinter import *
+class Checkbar(Frame):
+   def __init__(self, parent=None, picks=[], side=LEFT, anchor=W):
+      Frame.__init__(self, parent)
+      self.vars = []
+      for pick in picks:
+         var = IntVar()
+         chk = Checkbutton(self, text=pick, variable=var)
+         chk.pack(side=side, anchor=anchor, expand=YES)
+         self.vars.append(var)
+   def state(self):
+      return map((lambda var: var.get()), self.vars)
+if __name__ == '__main__':
+   root = Tk()
+   lng = Checkbar(root, ['Python', 'Ruby', 'Perl', 'C++'])
+   tgl = Checkbar(root, ['English','German'])
+   lng.pack(side=TOP,  fill=X)
+   tgl.pack(side=LEFT)
+   lng.config(relief=GROOVE, bd=2)
+
+   def allstates():
+      print(list(lng.state()), list(tgl.state()))
+   Button(root, text='Quit', command=root.quit).pack(side=RIGHT)
+   Button(root, text='Peek', command=allstates).pack(side=RIGHT)
+   root.mainloop()
+
+-----------------------------------------------------------------------------------------
+
+# Name- Shah Saud Ahmad
+# Div - A
+# Class - TYCS SEM 6
+# Enrollment - E20110192000310095
+# Subject - Python 2
+# Aim- Create GUI application design in python using various widgets of tkinter library
+# Assignment - 1.2
+# Pc no- 54
+# Faculty name - Yesha Mehta Ma'am
+
+
+from tkinter import *
+master = Tk()
+
+def var_states():
+   print("male: %d,\nfemale: %d" % (var1.get(), var2.get()))
+
+Label(master, text="Your sex:").grid(row=0, sticky=W)
+var1 = IntVar()
+Checkbutton(master, text="male", variable=var1).grid(row=1, sticky=W)
+var2 = IntVar()
+Checkbutton(master, text="female", variable=var2).grid(row=2, sticky=W)
+Button(master, text='Quit', command=master.quit).grid(row=3, sticky=W, pady=4)
+Button(master, text='Show', command=var_states).grid(row=4, sticky=W, pady=4)
+mainloop()
+
+----------------------------------------------------------------------------------------
+
+# Name- Shah Saud Ahmad
+# Div - A
+# Class - TYCS SEM 6
+# Enrollment - E20110192000310095
+# Subject - Python 2
+# Aim- Create GUI application design in python using various widgets of tkinter library
+# Assignment - 1.3
+# Pc no- 54
+# Faculty name - Yesha Mehta Ma'am
+
+
+from tkinter import *
+class App:
+  def __init__(self, master):
+    frame = Frame(master)
+    frame.pack()
+    self.button = Button(frame,
+                         text="QUIT", fg="red",
+                         command=quit)
+    self.button.pack(side=LEFT)
+    self.slogan = Button(frame,
+                         text="Hello",
+                         command=self.write_slogan)
+    self.slogan.pack(side=LEFT)
+  def write_slogan(self):
+    print("Tkinter is easy to use!")
+
+root = Tk()
+app = App(root)
+root.mainloop()
+
+--------------------------------------------------------------------------------------------
+# Name- Shah Saud Ahmad
+# Div - A
+# Class - TYCS SEM 6
+# Enrollment - E20110192000310095
+# Subject - Python 2
+# Aim- Create GUI application design in python using various widgets of tkinter library
+# Assignment - 1.4
+# Pc no- 54
+# Faculty name - Yesha Mehta Ma'am
+
+
+from tkinter import *
+from math import *
+def evaluate(event):
+    res.configure(text = "Result: " + str(eval(entry.get())))
+w = Tk()
+Label(w, text="Your Expression:").pack()
+entry = Entry(w)
+entry.bind("<Return>", evaluate)
+entry.pack()
+res = Label(w)
+res.pack()
+w.mainloop()
+
+---------------------------------------------------------------------------------------------
+# Name- Shah Saud Ahmad
+# Div - A
+# Class - TYCS SEM 6
+# Enrollment - E20110192000310095
+# Subject - Python 2
+# Aim- Create GUI application design in python using various widgets of tkinter library
+# Assignment - 1.5
+# Pc no- 54
+# Faculty name - Yesha Mehta Ma'am
+
+
+from tkinter import *
+
+canvas_width = 300
+canvas_height =80
+
+master = Tk()
+canvas = Canvas(master,
+           width=canvas_width,
+           height=canvas_height)
+canvas.pack()
+
+bitmaps = ["error", "gray75", "gray50", "gray25", "gray12", "hourglass", "info", "questhead", "question", "warning"]
+nsteps = len(bitmaps)
+step_x = int(canvas_width / nsteps)
+
+for i in range(0, nsteps):
+   canvas.create_bitmap((i+1)*step_x - step_x/2,50, bitmap=bitmaps[i])
+
+mainloop()
+
+-------------------------------------------------------------------------------------------------
+# Name- Shah Saud Ahmad
+# Div - A
+# Class - TYCS SEM 6
+# Enrollment - E20110192000310095
+# Subject - Python 2
+# Aim- Create GUI application design in python using various widgets of tkinter library
+# Assignment - 1.6
+# Pc no- 54
+# Faculty name - Yesha Mehta Ma'am
+
+
+from tkinter import *
+master = Tk()
+var1 = IntVar()
+Checkbutton(master, text="male", variable=var1).grid(row=0, sticky=W)
+var2 = IntVar()
+Checkbutton(master, text="female", variable=var2).grid(row=1, sticky=W)
+mainloop()
+
+-------------------------------------------------------------------------------------------------
+
+# Name- Shah Saud Ahmad
+# Div - A
+# Class - TYCS SEM 6
+# Enrollment - E20110192000310095
+# Subject - Python 2
+# Aim- Create GUI application design in python using various widgets of tkinter library
+# Assignment - 1.7
+# Pc no- 54
+# Faculty name - Yesha Mehta Ma'am
+
+
+from tkinter import *
+
+def checkered(canvas, line_distance):
+   # vertical lines at an interval of "line_distance" pixel
+   for x in range(line_distance,canvas_width,line_distance):
+      canvas.create_line(x, 0, x, canvas_height, fill="#476042")
+   # horizontal lines at an interval of "line_distance" pixel
+   for y in range(line_distance,canvas_height,line_distance):
+      canvas.create_line(0, y, canvas_width, y, fill="#476042")
+
+
+master = Tk()
+canvas_width = 200
+canvas_height = 100
+w = Canvas(master,
+           width=canvas_width,
+           height=canvas_height)
+w.pack()
+
+checkered(w,10)
+
+mainloop()
+
+----------------------------------------------------------------------------------------
+
+# Name- Shah Saud Ahmad
+# Div - A
+# Class - TYCS SEM 6
+# Enrollment - E20110192000310095
+# Subject - Python 2
+# Aim- Create GUI application design in python using various widgets of tkinter library
+# Assignment - 1.8
+# Pc no- 54
+# Faculty name - Yesha Mehta Ma'am
+
+
+from tkinter import *
+
+canvas_width = 1000
+canvas_height =600
+
+master = Tk()
+
+canvas = Canvas(master,
+           width=canvas_width,
+           height=canvas_height)
+canvas.pack()
+
+img = PhotoImage(file="test.gif")
+canvas.create_image(20,20, anchor=NW, image=img)
+
+mainloop()
+
+----------------------------------------------------------------------------------
+
+# Name- Shah Saud Ahmad
+# Div - A
+# Class - TYCS SEM 6
+# Enrollment - E20110192000310095
+# Subject - Python 2
+# Aim- Create GUI application design in python using various widgets of tkinter library
+# Assignment - 1.9
+# Pc no- 54
+# Faculty name - Yesha Mehta Ma'am
+
+
+from tkinter import *
+
+canvas_width = 200
+canvas_height = 100
+
+colours = ("#476042", "yellow")
+box=[]
+
+for ratio in ( 0.2, 0.35 ):
+   box.append( (canvas_width * ratio,
+                canvas_height * ratio,
+                canvas_width * (1 - ratio),
+                canvas_height * (1 - ratio) ) )
+
+master = Tk()
+
+w = Canvas(master,
+           width=canvas_width,
+           height=canvas_height)
+w.pack()
+
+for i in range(2):
+   w.create_rectangle(box[i][0], box[i][1],box[i][2],box[i][3], fill=colours[i])
+
+w.create_line(0, 0,                 # origin of canvas
+              box[0][0], box[0][1], # coordinates of left upper corner of the box[0]
+              fill=colours[0],
+              width=3)
+w.create_line(0, canvas_height,     # lower left corner of canvas
+              box[0][0], box[0][3], # lower left corner of box[0]
+              fill=colours[0],
+              width=3)
+w.create_line(box[0][2],box[0][1],  # right upper corner of box[0]
+              canvas_width, 0,      # right upper corner of canvas
+              fill=colours[0],
+              width=3)
+w.create_line(box[0][2], box[0][3], # lower right corner pf box[0]
+              canvas_width, canvas_height, # lower right corner of canvas
+              fill=colours[0], width=3)
+
+w.create_text(canvas_width / 2,
+              canvas_height / 2,
+              text="Python")
+mainloop()
+
+--------------------------------------------------------------------------------------------
+# Name- Shah Saud Ahmad
+# Div - A
+# Class - TYCS SEM 6
+# Enrollment - E20110192000310095
+# Subject - Python 2
+# Aim- Create GUI application design in python using various widgets of tkinter library
+# Assignment - 1.10
+# Pc no- 54
+# Faculty name - Yesha Mehta Ma'am
+
+
+from tkinter import *
+master = Tk()
+
+canvas_width = 80
+canvas_height = 40
+w = Canvas(master,
+           width=canvas_width,
+           height=canvas_height)
+w.pack()
+
+y = int(canvas_height / 2)
+w.create_line(0, y, canvas_width, y, fill="#476042")
+
+
+mainloop()
+
+------------------------------------------------------------------------------------------
+# Name- Shah Saud Ahmad
+# Div - A
+# Class - TYCS SEM 6
+# Enrollment - E20110192000310095
+# Subject - Python 2
+# Aim- Create GUI application design in python using various widgets of tkinter library
+# Assignment - 1.11
+# Pc no- 54
+# Faculty name - Yesha Mehta Ma'am
+
+
+from tkinter import *
+
+canvas_width = 400
+canvas_height =400
+python_green = "#476042"
+
+def polygon_star(canvas, x,y,p,t, outline=python_green, fill='yellow', width = 1):
+   points = []
+   for i in (1,-1):
+      points.extend((x,	      y + i*p))
+      points.extend((x + i*t, y + i*t))
+      points.extend((x + i*p, y))
+      points.extend((x + i*t, y - i * t))
+
+   print(points)
+
+   canvas.create_polygon(points, outline=outline,
+                         fill=fill, width=width)
+
+master = Tk()
+
+w = Canvas(master,
+           width=canvas_width,
+           height=canvas_height)
+w.pack()
+
+p = 50
+t = 15
+
+nsteps = 10
+step_x = int(canvas_width / nsteps)
+step_y = int(canvas_height / nsteps)
+
+for i in range(1, nsteps):
+   polygon_star(w,i*step_x,i*step_y,p,t,outline='red',fill='gold', width=3)
+   polygon_star(w,i*step_x,canvas_height - i*step_y,p,t,outline='red',fill='gold', width=3)
+
+mainloop()
+
+--------------------------------------------------------------------------------------------------
+
+
+
+
+
+# Name- Shah Saud Ahmad
+# Div - A
+# Class - TYCS SEM 6
+# Enrollment - E20110192000310095
+# Subject - Python 2
+# Aim- Create Registration and Login form in tkinter and 
+        allow user to login with otp/qr code/static userid password.
+# Assignment - 2
+# Pc no- 54
+# Faculty name - Yesha Mehta Ma'am
+
+----------------------------Register.py with saving username and pwd ------------------------------------------
+# Name- Shah Saud Ahmad
+
+from tkinter import *
+
+window = Tk()
+window.title("ItsExceptional")
+window.geometry("300x200")
+window.config(background = "black", pady=10)
+
+
+lb1 = Label(window, text = "Login Form", bg = "black", fg="white", font=20)
+lb1.place(x=110, y=5)
+
+lb2_u = Label(window, text = "Username - ", bg="black", fg="white")
+lb2_u2 = Entry(window)
+lb2_u.place(x=10, y=40)
+lb2_u2.place(x=110, y=40)
+
+
+lb2_p = Label(window, text = "Password - ", bg="black", fg="white")
+lb2_p2 = Entry(window)
+lb2_p.place(x=10, y=80)
+lb2_p2.place(x=110,y=80)
+
+
+display = Label(window, text="Access : ", bg="black")
+
+bt = Button(window, text="Login")
+
+
+
+def dis():
+    user = lb2_u2.get()
+    pas = lb2_p2.get()
+    filo = open('register.txt').readlines()
+    for lino in filo:
+        if user == lino.split()[2]:
+            display.config(bg="green",fg="white", text="Access :Granted")
+            break
+        else:
+            display.config(bg="red",fg="white", text="Access :Denied")
+
+bt.config(command=dis)
+bt.place(x=110, y=120)
+
+
+def newsign():
+    sign=Tk()
+    sign.title("SignUp")
+    sign.geometry("300x200")
+    sign.config(background = "black", pady=10)
+
+    lbs = Label(sign, text = "SignUp", bg = "black", fg="white", font=20)
+    lbs.place(x=110, y=5)
+
+    lb2_s = Label(sign, text = "Username - ", bg="black", fg="white")
+    lb2_s2 = Entry(sign)
+    lb2_s.place(x=10, y=40)
+    lb2_s2.place(x=110, y=40)
+
+
+    lb2_ps = Label(sign, text = "Password - ", bg="black", fg="white")
+    lb2_ps2 = Entry(sign)
+    lb2_ps.place(x=10, y=80)
+    lb2_ps2.place(x=110,y=80)
+
+    dis = Label(sign, text ="", bg="black", fg="white")
+    
+    def reg():
+        username = lb2_s2.get()
+        pas = lb2_ps2.get()
+        
+        file =  open("register.txt","a")
+        fiIn = open('register.txt').readlines()
+
+
+        l=[] 
+        for lines in fiIn:
+            l.append(lines.split()[2])
+
+        if username in l:
+            print("Exists")
+            dis.config(text="User Exists", bg="green")
+
+        else:
+            print("not Exists")
+            file.write("Username = "+username+"\n")
+            file.write("Password = "+pas+"\n")
+            file.close()
+            dis.config(text = "Registered", bg="green")
+        
+    bts = Button(sign, text="Register", command=reg)
+    bts.place(x=110, y=120)
+    dis.place(x=100, y=150)
+
+    
+    window.destroy()
+
+bt2 = Button(window, text="SignUp", command=newsign)
+bt2.place(x=170, y=120)
+
+
+display.place(x=110, y=155)
+
+window.mainloop()
+
+------------------Login with saved data -----------------------------
+# Name- Shah Saud Ahmad
+
+from tkinter import *
+from functools import partial
+
+def validateLogin(username, password):
+	print("username entered :", username.get())
+	print("password entered :", password.get())
+	return
+
+#window
+tkWindow = Tk()  
+tkWindow.geometry('400x150')  
+tkWindow.title('Tkinter Login Form - pythonexamples.org')
+
+#username label and text entry box
+usernameLabel = Label(tkWindow, text="User Name").grid(row=0, column=0)
+username = StringVar()
+usernameEntry = Entry(tkWindow, textvariable=username).grid(row=0, column=1)  
+
+#password label and password entry box
+passwordLabel = Label(tkWindow,text="Password").grid(row=1, column=0)  
+password = StringVar()
+passwordEntry = Entry(tkWindow, textvariable=password, show='*').grid(row=1, column=1)  
+
+validateLogin = partial(validateLogin, username, password)
+
+#login button
+loginButton = Button(tkWindow, text="Login", command=validateLogin).grid(row=4, column=0)  
+
+tkWindow.mainloop()
+
+
+---------------Login with OTP---------------------------------
+# Name- Shah Saud Ahmad
+
+
+from tkinter import *
+import tkinter.messagebox as tsmg
+import requests
+import random
+import json
+
+root=Tk()
+
+rand=random.randint(1,999999)
+
+msg=f"Your One Time Password(OTP) is {rand}"
+
+def nextPage():
+    root.destroy()
+    import index
+
+def sms_send():
+    tsmg.showerror("Info",f"Your otp is {rand}")
+    # return rand;
+    # e5.delete(0,"end")
+    # e5.set("Text set by button")
+
+
+def send():
+    a=num.get()
+    if(a==""):
+        tsmg.showerror("Error","Enter Your Mobile Number")
+    elif (len(a)<10):
+        tsmg.showerror("Error","Invalid Mobile Number")
+        num.set("")
+    else:
+        b=tsmg.askyesno("Info",f"Your Number is {a}")
+        if(b==True):
+            sms_send()
+        else:
+            num.set("")
+
+def check():
+    c=otp.get()
+    if(c==""):
+        tsmg.showerror("Error","Enter OTP")
+    else:
+        if(str(rand)==c):
+            # tsmg.showinfo("Info","Successful")
+            nextPage()
+        else:
+            tsmg.showerror("Error","Invalid OTP")
+            num.set("")
+            otp.set("")
+
+
+root.geometry("500x500")
+root.title("OTP-Checker")
+
+num=StringVar()
+otp=StringVar()
+
+f1=Frame(root)
+Label(f1,text="Check Your OTP",font="SegoeUI 30 bold",fg="purple").pack(padx=5,pady=10)
+f1.pack(fill=BOTH)
+
+f2=Frame(root)
+Label(f2,text="Enter Your Number",font="SegoeUI 20 bold",fg="teal").pack(padx=5,pady=5)
+e1=Entry(f2,textvariable=num,font="SegoeUI 14 bold",fg="black",bg="white",relief=SUNKEN,borderwidth=4,justify="center").pack(ipady=5)
+f2.pack(fill=BOTH,padx=5,pady=10)
+
+f3=Frame(root)
+Label(f3,text="Enter OTP",font="SegoeUI 20 bold",fg="teal").pack(padx=5,pady=5)
+e2=Entry(f3,textvariable=otp,font="SegoeUI 14 bold",fg="black",bg="white",relief=SUNKEN,borderwidth=5,justify="center").pack(ipady=5)
+f3.pack(fill=BOTH,padx=5,pady=10)
+
+f4=Frame(root)
+Button(f4,text="Send OTP",command=send,font="SegoeUI 10 bold",fg="purple").pack(padx=20,pady=10,side=LEFT)
+Button(f4,text="Check OTP",command=check,font="SegoeUI 10 bold",fg="purple").pack(padx=40,pady=10,side=LEFT)
+# Button(f4,text="Check OTP",command=sms_send,font="SegoeUI 10 bold",fg="purple").pack(padx=60,pady=10,side=LEFT)
+f4.pack()
+
+root.mainloop()
+
+-----> redirect to Index
+
+from tkinter import *
+import tkinter.messagebox as tsmg
+import requests
+import random
+import json
+
+root=Tk()
+
+
+def nextPage():
+    root.destroy()
+    import index
+
+
+
+
+root.geometry("500x500")
+root.title("Dashboard")
+
+num=StringVar()
+otp=StringVar()
+
+f1=Frame(root)
+Label(f1,text="Index Page",font="SegoeUI 30 bold",fg="purple").pack(padx=5,pady=10)
+f1.pack(fill=BOTH)
+
+
+root.mainloop()
+
+
+----------------------------------------------------------------------------------------
+# Name- Shah Saud Ahmad
+
+
+# Div - A
+# Class - TYCS SEM 6
+# Enrollment - E20110192000310095
+# Subject - Python 2
+# Aim- Create a to-do list application with tkinter and save data to text file. 
+# Assignment - 3
+# Pc no- 54
+# Faculty name - Yesha Mehta Ma'am
+
+--------------------todo.py---------------------------------------
+# Name- Shah Saud Ahmad
+
+import tkinter
+import random
+from tkinter import messagebox
+
+
+def update_tasks():
+    clear_listbox()
+    for task in tasks:
+        lb_tasks.insert("end", task)
+    numtask = len(tasks)
+    label_dsp_count['text'] = numtask
+
+
+def clear_listbox():
+    lb_tasks.delete(0, "end")
+
+def add_task():
+    label_dsply["text"] = ""
+    Ntask = text_input.get()
+    if Ntask != "":
+        tasks.append(Ntask)
+        update_tasks()
+    else:
+        label_dsply["text"] = "please enter the text"
+    text_input.delete(0, 'end')
+
+
+def delete_all():
+    conf = messagebox.askquestion(
+        'delet all??', 'are you sure to delete all task?')
+    print(conf)
+    if conf.upper() == "YES":
+        global tasks
+        tasks = []
+        update_tasks()
+    else:
+        pass
+
+
+def delete_one():
+    de = lb_tasks.get("active")
+    if de in tasks:
+        tasks.remove(de)
+    update_tasks()
+
+
+def sort_asc():
+    tasks.sort()
+    update_tasks()
+
+
+def sort_dsc():
+    tasks.sort(reverse=True)
+    update_tasks()
+
+
+def random_task():
+    randtask = random.choice(tasks)
+    label_dsply["text"] = randtask
+
+
+def number_task():
+    numtask = len(tasks)
+    label_dsply["text"] = numtask
+
+
+def save_act():
+    savecon = messagebox.askquestion(
+        'Save Confirmation', 'save your progress?')
+    if savecon.upper() == "YES":
+        with open("SaveFile.txt", "w") as filehandle:
+            for listitem in tasks:
+                filehandle.write('%s\n' % listitem)
+    else:
+        pass
+
+
+def load_act():
+    loadcon = messagebox.askquestion(
+        'Save Confirmation', 'save your progress?')
+    if loadcon.upper() == "YES":
+        tasks.clear()
+
+        with open('SaveFile.txt', 'r') as filereader:
+            for line in filereader:
+                currentask = line
+                tasks.append(currentask)
+            update_tasks()
+
+    else:
+        pass
+
+
+def exit_app():
+    confex = messagebox.askquestion(
+        'Quit Confirmation', 'are you sue you want to quit?')
+    if confex.upper() == "YES":
+        root.destroy()
+    else:
+        pass
+
+
+root = tkinter.Tk()
+# change root background col and ect
+root.configure(bg="white")
+root.title("my to do list")
+root.geometry("260x300")
+# database
+tasks = []
+# tasks = ['tes 1', 'best2', 'dest3']
+
+
+# GUI (graphical user interface)
+# main root app
+
+
+label_title = tkinter.Label(root, text="Todo List", bg="white")
+label_title.grid(row=0, column=0)
+
+label_dsply = tkinter.Label(root, text="", bg="white")
+label_dsply.grid(row=0, column=1)
+
+label_dsp_count = tkinter.Label(root, text="", bg="white")
+label_dsp_count.grid(row=0, column=3)
+
+text_input = tkinter.Entry(root, width=15)
+text_input.grid(row=1, column=1)
+
+# button section
+text_add_bttn = tkinter.Button(
+    root, text="add todo", bg="white", fg="green", width=15, command=add_task)
+text_add_bttn.grid(row=1, column=0)
+
+delone_bttn = tkinter.Button(
+    root, text="Done Task", bg="white", width=15, command=delete_one)
+delone_bttn.grid(row=2, column=0)
+
+delall_bttn = tkinter.Button(
+    root, text="Delete all", bg="white", width=15, command=delete_all)
+delall_bttn.grid(row=3, column=0)
+
+sort_asc = tkinter.Button(root, text="sort (ASC)",
+                          bg="White", width=15, command=sort_asc)
+sort_asc.grid(row=4, column=0)
+
+sort_dsc = tkinter.Button(root, text="sort (DSC)",
+                          bg="White", width=15, command=sort_dsc)
+sort_dsc.grid(row=5, column=0)
+
+random_bttn = tkinter.Button(
+    root, text="random task", bg="White", width=15, command=random_task)
+random_bttn.grid(row=6, column=0)
+
+number_task = tkinter.Button(
+    root, text="Number of Task", bg="white", width=15, command=number_task)
+number_task.grid(row=7, column=0)
+
+exit_bttn = tkinter.Button(root, text="exit app",
+                           bg="white", width=15, command=exit_app)
+exit_bttn.grid(row=8, column=0)
+
+save_button = tkinter.Button(
+    root, text="save TodoList", bg="white", width=15, command=save_act)
+save_button.grid(row=10, column=1)
+
+load_button = tkinter.Button(
+    root, text="Load LastTodolist", bg="white", width=15, command=load_act)
+load_button.grid(row=10, column=0)
+
+
+lb_tasks = tkinter.Listbox(root)
+lb_tasks.grid(row=2, column=1, rowspan=7)
+
+
+# main loop
+root.mainloop()
+
+
+
+--------------------------------------------------------------------------------
+# Name- Shah Saud Ahmad
+
+
+# Div - A
+# Class - TYCS SEM 6
+# Enrollment - E20110192000310095
+# Subject - Python 2
+# Aim- Create a to-do list application with tkinter and save data to text file. 
+# Assignment - 4
+# Pc no- 54
+# Faculty name - Yesha Mehta Ma'am
+
+--------------------------------reminder.py--------------------------------
+# Name- Shah Saud Ahmad
+
+from tkinter import *
+from tkinter import ttk
+from tkinter import messagebox
+from db import Database
+
+
+db = Database('reminder.db')
+window = Tk()
+window.title("Reminder Management System")
+window.geometry("1920x1080+0+0")
+window.config(bg="#2c3e50")
+window.state("normal")
+
+
+date = StringVar()
+time = StringVar()
+remadetail = StringVar()
+mobno = StringVar()
+email = StringVar()
+alerttime = StringVar()
+
+# Entries Frame
+entries_frame = Frame(window, bg="#535c68")
+entries_frame.pack(side=TOP, fill=X)
+title = Label(entries_frame, text="Remainder", font=("Calibri", 18, "bold"), bg="#535c68", fg="white")
+title.grid(row=0, columnspan=2, padx=10, pady=20, sticky="w")
+
+lbldate = Label(entries_frame, text="Date", font=("Calibri", 16), bg="#535c68", fg="white")
+lbldate.grid(row=1, column=0, padx=10, pady=10, sticky="w")
+txtdate = Entry(entries_frame, textvariable=date, font=("Calibri", 16), width=30)
+txtdate.grid(row=1, column=1, padx=10, pady=10, sticky="w")
+
+lbltime = Label(entries_frame, text="time", font=("Calibri", 16), bg="#535c68", fg="white")
+lbltime.grid(row=1, column=2, padx=10, pady=10, sticky="w")
+txttime = Entry(entries_frame, textvariable=time, font=("Calibri", 16), width=30)
+txttime.grid(row=1, column=3, padx=10, pady=10, sticky="w")
+
+lblremadetail = Label(entries_frame, text="Remainder_detail", font=("Calibri", 16), bg="#535c68", fg="white")
+lblremadetail.grid(row=2, column=0, padx=10, pady=10, sticky="w")
+txtremadetail = Entry(entries_frame, textvariable=remadetail, font=("Calibri", 16), width=30)
+txtremadetail.grid(row=2, column=1, padx=10, pady=10, sticky="w")
+
+lblmobno = Label(entries_frame, text="Contact no", font=("Calibri", 16), bg="#535c68", fg="white")
+lblmobno.grid(row=2, column=2, padx=10, pady=10, sticky="w")
+txtmobno = Entry(entries_frame, textvariable=mobno, font=("Calibri", 16), width=30)
+txtmobno.grid(row=2, column=3, padx=10, pady=10, sticky="w")
+
+lblEmail = Label(entries_frame, text="Email", font=("Calibri", 16), bg="#535c68", fg="white")
+lblEmail.grid(row=3, column=0, padx=10, pady=10, sticky="w")
+txtEmail = Entry(entries_frame, textvariable=email, font=("Calibri", 16), width=30)
+txtEmail.grid(row=3, column=1, padx=10, pady=10, sticky="w")
+
+lblalerttime = Label(entries_frame, text="AlertTime", font=("Calibri", 16), bg="#535c68", fg="white")
+lblalerttime.grid(row=3, column=2, padx=10, pady=10, sticky="w")
+comboalerttime = ttk.Combobox(entries_frame, font=("Calibri", 16), width=28, textvariable=alerttime, state="readonly")
+comboalerttime['values'] = ("10min","30min", "1hour")
+comboalerttime.grid(row=3, column=3, padx=10, sticky="w")
+
+
+def getData(event):
+    selected_row = tv.focus()
+    data = tv.item(selected_row)
+    global row
+    row = data["values"]
+    #print(row)
+    date.set(row[1])
+    time.set(row[2])
+    remadetail.set(row[3])
+    mobno.set(row[4])
+    email.set(row[5])
+    alerttime.set(row[6])
+
+def dispalyAll():
+    tv.delete(*tv.get_children())
+    for row in db.fetch():
+        tv.insert("", END, values=row)
+
+
+def add_employee():
+    if txtdate.get() == "" or txttime.get() == "" or txtremadetail.get() == "" or txtmobno.get() == "" or txtEmail.get() == "" or comboalerttime.get() == "":
+        messagebox.showerror("Erorr in Input", "Please Fill All the Details")
+        return
+    db.insert(txtdate.get(),txttime.get(), txtremadetail.get() , txtmobno.get() ,txtEmail.get(), comboalerttime.get())
+    messagebox.showinfo("Success", "Record Inserted")
+    clearAll()
+    dispalyAll()
+
+
+
+def update_employee():
+    if txtdate.get() == "" or txttime.get() == "" or txtremadetail.get() == "" or txtmobno.get() == "" or txtEmail.get() == "" or comboalerttime.get()== "":
+        messagebox.showerror("Erorr in Input", "Please Fill All the Details")
+        return
+    db.update(row[0],txtdate.get(), txttime.get(), txtremadetail.get(), txtmobno.get(), txtEmail.get(), comboalerttime.get())
+    messagebox.showinfo("Success", "Record Update")
+    clearAll()
+    dispalyAll()
+
+
+def delete_employee():
+    db.remove(row[0])
+    clearAll()
+    dispalyAll()
+
+
+def clearAll():
+    date.set("")
+    time.set("")
+    remadetail.set("")
+    mobno.set("")
+    email.set("")
+    alerttime.set("")
+    
+
+
+
+btn_frame = Frame(entries_frame, bg="#535c68")
+btn_frame.grid(row=6, column=0, columnspan=4, padx=10, pady=10, sticky="w")
+btnAdd = Button(btn_frame, text="Add Details",command=add_employee, width=15, font=("Calibri", 16, "bold"), fg="white",
+                bg="#16a085", bd=0).grid(row=0, column=0)
+btnEdit = Button(btn_frame,  text="Update Details",command=update_employee, width=15, font=("Calibri", 16, "bold"),
+                 fg="white", bg="#2980b9",
+                 bd=0).grid(row=0, column=1, padx=10)
+btnDelete = Button(btn_frame, text="Delete Details",command=delete_employee, width=15, font=("Calibri", 16, "bold"),
+                   fg="white", bg="#c0392b",
+                   bd=0).grid(row=0, column=2, padx=10)
+btnClear = Button(btn_frame,text="Clear Details",command=clearAll, width=15, font=("Calibri", 16, "bold"), fg="white",
+                  bg="#f39c12",
+                  bd=0).grid(row=0, column=3, padx=10)
+
+
+# Table Frame
+tree_frame = Frame(window, bg="#ecf0f1")
+tree_frame.place(x=0, y=480, width=1980, height=520)
+style = ttk.Style()
+style.configure("mystyle.Treeview", font=('Calibri', 18),
+                rowheight=50)  # Modify the font of the body
+style.configure("mystyle.Treeview.Heading", font=('Calibri', 18))  # Modify the font of the headings
+tv = ttk.Treeview(tree_frame, columns=(1, 2, 3, 4, 5, 6, 7), style="mystyle.Treeview")
+tv.heading("1", text="ID")
+tv.column("1", width=3)
+tv.heading("2", text="Date")
+tv.column("2", width=3)
+tv.heading("3", text="time")
+tv.column("3", width=3)
+tv.heading("4", text="Remainder_detail")
+tv.column("4", width=3)
+tv.heading("5", text="Contact no")
+tv.column("5", width=3)
+tv.heading("6", text="Email")
+tv.column("6", width=3)
+tv.heading("7", text="Alert Time")
+#tv.heading("8", text="Address")
+tv['show'] = 'headings'
+tv.bind("<ButtonRelease-1>",getData)
+tv.pack(fill=X)
+
+dispalyAll()
+
+window.mainloop()
+
+-------------------------db.py---------------------------------------
+# Name- Shah Saud Ahmad
+
+import sqlite3
+
+
+class Database:
+    def __init__(self, db):
+        self.con = sqlite3.connect(db)
+        self.cur = self.con.cursor()
+        sql = """
+        CREATE TABLE IF NOT EXISTS reminder(
+            id Integer Primary Key,
+            date text,
+            time text,
+            remadetail text,
+            mobno text,
+            email text,
+            alerttime text    
+        )
+        """
+        self.cur.execute(sql)
+        self.con.commit()
+
+    # Insert Function
+    def insert(self,date, time, remadetail, mobno, email, alerttime):
+        self.cur.execute("insert into reminder values (NULL,?,?,?,?,?,?)",
+                         (date, time, remadetail, mobno, email, alerttime))
+        self.con.commit()
+
+    # Fetch All Data from DB
+    def fetch(self):
+        self.cur.execute("SELECT * from reminder")
+        rows = self.cur.fetchall()
+        # print(rows)
+        return rows
+
+    # Delete a Record in DB
+    def remove(self, id):
+        self.cur.execute("delete from reminder where id=?", (id,))
+        self.con.commit()
+
+    # Update a Record in DB
+    def update(self, id, date, time, remadetail, mobno, email, alerttime):
+        self.cur.execute(
+            "update reminder set id=?, date=?, time=?, remadetail=?, mobno=?, email=?, alerttime=?,",
+            (date, time, remadetail, mobno, email, alerttime))
+        self.con.commit()

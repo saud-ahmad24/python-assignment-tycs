@@ -11,7 +11,7 @@ def login():
     else:
       if uname=="abc@gmail.com" and pwd=="abc123":
           login_screen.destroy()
-          import hello
+          import dash
 
        
       else:

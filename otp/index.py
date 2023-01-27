@@ -6,9 +6,6 @@ import json
 
 root=Tk()
 
-rand=random.randint(1,999999)
-
-msg=f"Your One Time Password(OTP) is {rand}"
 
 def nextPage():
     root.destroy()
@@ -18,7 +15,7 @@ def nextPage():
 
 
 root.geometry("500x500")
-root.title("OTP-Checker")
+root.title("Dashboard")
 
 num=StringVar()
 otp=StringVar()
