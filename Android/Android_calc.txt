@@ -1,3 +1,17 @@
+<!-- 
+Name- Shah Saud Ahmad
+Div - A
+Class - TYCS SEM 6
+Enrollment - E20110192000310095
+Subject - Fundamental of mobile computing
+Aim- To develop knowledge of working with various layouts 
+     in Android application development.
+Assignment - 2 - layout code
+Pc no- 54
+Faculty name - Maghavi Dave
+Date - 04-01-2023
+-->
+----------------------------Java Code------------------------------------
 package com.example.calc_95;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -215,20 +229,30 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
-3
 
 
 
 
 
 
-////////////////////////////////////////////////////////////////////////////////////////////
+----------------------------------------------------------------------------------------------------
 
 
+<!-- 
+Name - Shah Saud Ahmad
+Div - A
+Class - TYCS SEM 6
+Enrollment - E20110192000310095
+Subject - Fundamental of mobile computing
+Aim - To develop knowledge of working with various layouts 
+     in Android application development.
+Assignment - 2 
+Pc no - 54
+Faculty name - Maghavi Dave
+Date - 04-01-2023
+-->
 
-
-
-
+-----------------------Design Code-----------------------------------------------
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
