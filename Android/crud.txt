@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/eid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:hint="Use while update"
+                android:layout_weight="1"></EditText>
+
+            <EditText
+                android:id="@+id/ename"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="13dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Employee name"></EditText>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:isScrollContainer="true"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/Designation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="11dp"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Designation"></EditText>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/insert"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="AddEmp"
+                android:text="Add" />
+
+            <Button
+                android:id="@+id/Update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_weight="1"
+                android:onClick="fnEditEmp"
+                android:text="Edit" />
+            <Button
+                android:id="@+id/Delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_weight="1"
+                android:onClick="fnRemoveEmp"
+                android:text="Remove" />
+        </LinearLayout>
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <ListView
+                android:id="@+id/lvStudent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+
+    </LinearLayout>
+
+
+package com.example.crud_95;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+
+public class MainActivity extends AppCompatActivity {
+    DBHelper_1 objDB;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        objDB = new DBHelper_1(this);
+    }
+}
+
+
+------------------------------------------------student_1.java--------------
+package com.example.crud_95;
+
+public class student_1 {
+    private int rollno;
+    private String name,course;
+
+    public student_1() {
+    }
+
+    public student_1(int rollno, String name, String course) {
+        this.rollno = rollno;
+        this.name = name;
+        this.course = course;
+    }
+
+    public student_1(String name, String course) {
+        this.name = name;
+        this.course = course;
+    }
+
+    public int getRollno() {
+        return rollno;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getCourse() {
+        return course;
+    }
+
+    public void setRollno(int rollno) {
+        this.rollno = rollno;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCourse(String course) {
+        this.course = course;
+    }
+}
+-------------------------DBHelper_1.java
+
+package com.example.crud_95;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+public class DBHelper_1 extends SQLiteOpenHelper {
+    public static final String DB_Name = "DB_Student1";
+    public static final String TBL_Name = "tbl_Student";
+
+    public DBHelper_1(Context context) {
+        super(context, DB_Name, null, 1);
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        String crt_qry = "CREATE TABLE " + TBL_Name +
+                "( rollno INTEGER PRIMARY KEY AUTOINCREMENT,"+
+                "name TEXT NOT NULL,"+
+                "course TEXT NOT NULL)";
+        db.execSQL(crt_qry);
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+        db.execSQL("DROP TABLE IF EXISTS "+ TBL_Name);
+        onCreate(db);
+    }
+}
+

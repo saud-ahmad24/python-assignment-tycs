@@ -1,0 +1,624 @@
+<!-- 
+Name- Shah Saud Ahmad
+Div - A
+Class - TYCS SEM 6
+Enrollment - E20110192000310095
+Subject - Fundamentals of Mobile Programming
+Aim-   Working with Intent Question: Implement intent in your “Job App” project
+Assignment - 5 -
+Pc no- 54
+Faculty name - Maghavi Dave
+Date - 27-02-2023
+-->
+
+---------------------------------------------------------------Job Application-------------------------------------------------------------------
+package com.example.crude;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class sharedpref extends AppCompatActivity {
+
+    TextView dsipres;
+    EditText name, contact_no, email, jpswd;
+    RadioGroup rgggroup;
+    CheckBox cjava, cphp, candroid, cother;
+    Button submit, clear;
+    Spinner spinn;
+    RadioButton rbtn;
+    String u_name, u_pswd, u_email, u_cno, check_val=null, spinn_value =null;
+    String qual[]={"12th","UG","PG"};
+    int retet =0;
+    Button btn_next;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_sharedpref);
+        Toast.makeText(this, "Welcome", Toast.LENGTH_SHORT).show();
+        name =findViewById(R.id.job_name);
+        contact_no =findViewById(R.id.contact_number);
+        email =findViewById(R.id.user_email);
+        jpswd =findViewById(R.id.user_pswd);
+        rgggroup =findViewById(R.id.rddgroup);
+        cjava =findViewById(R.id.check_java);
+        cphp =findViewById(R.id.check_php);
+        candroid =findViewById(R.id.check_android);
+        cother =findViewById(R.id.check_other);
+        spinn =findViewById(R.id.spinner_job);
+        submit =findViewById(R.id.submit);
+        clear =findViewById(R.id.btn_clear);
+        dsipres =findViewById(R.id.res_result);
+
+        ArrayAdapter<String> adp=new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, qual);
+        spinn.setAdapter(adp);
+
+        btn_next =findViewById(R.id.btnnext);
+        btn_next.setVisibility(View.INVISIBLE);
+
+        rgggroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                rbtn =findViewById(i);
+                if(rbtn.getText().toString().equals("Yes"))
+                {
+                    btn_next.setVisibility(View.VISIBLE);
+                }
+                else
+                {
+                    btn_next.setVisibility(View.INVISIBLE);
+                }
+            }
+        });
+
+
+        btn_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                u_cno = contact_no.getText().toString();
+                int age=Integer.parseInt(u_cno);
+                u_name= name.getText().toString();
+                if(cjava.isChecked())
+                {
+                    check_val += cjava.getText();
+                }
+                if(cphp.isChecked())
+                {
+                    check_val += cphp.getText();
+                }
+                if(candroid.isChecked())
+                {
+                    check_val += candroid.getText();
+                }
+                if(cother.isChecked())
+                {
+                    check_val += cother.getText();
+                }
+
+                if(u_name.equals("") && age==0 && check_val.equals(""))
+                {
+                    Toast.makeText(sharedpref.this, "Enter values", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Intent ine =new Intent(sharedpref.this,MainActivity_cities.class);
+                    ine.putExtra("name",u_name);
+                    ine.putExtra("age",age);
+                    ine.putExtra("skills", check_val);
+                    startActivity(ine);
+                }
+            }
+        });
+
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                u_name= name.getText().toString();
+                u_pswd = jpswd.getText().toString();
+                u_cno = contact_no.getText().toString();
+                u_email = email.getText().toString();
+                retet = rgggroup.getCheckedRadioButtonId();
+                rbtn =findViewById(retet);
+
+                if(cjava.isChecked())
+                {
+                    check_val += cjava.getText();
+                }
+                if(cphp.isChecked())
+                {
+                    check_val += cphp.getText();
+                }
+                if(candroid.isChecked())
+                {
+                    check_val += candroid.getText();
+                }
+                if(cother.isChecked())
+                {
+                    check_val += cother.getText();
+                }
+                dsipres.setText("Name: "+u_name+"\nContact NO: "+ u_cno +"\nPassword: "+ u_pswd +"\nEmail ID: "+ u_email +"\nDo you want to relocate?: "+ rbtn.getText()+"\nSkills: "+ check_val +"\nQualification:"+ spinn.getSelectedItem());
+            }
+        });
+        clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dsipres.setText(null);
+                contact_no.setText(null);
+                email.setText(null);
+                name.setText(null);
+                jpswd.setText(null);
+                rgggroup.clearCheck();
+                cjava.setChecked(false);
+                cphp.setChecked(false);
+                candroid.setChecked(false);
+                cother.setChecked(false);
+            }
+        });
+
+
+    }
+
+
+}
+
+---------------------------------------------------------------------------------------------
+<!-- 
+Name- Shah Saud Ahmad
+Div - A
+Class - TYCS SEM 6
+Enrollment - E20110192000310095
+Subject - Fundamentals of Mobile Programming
+Aim-   Working with Intent Question: Implement intent in your “Job App” project
+Assignment - 5 -
+Pc no- 54
+Faculty name - Maghavi Dave
+Date - 27-02-2023
+-->
+------------------------------Xml------------------------------------------------------------------------------
+
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".sharedpref">
+
+    <TextView
+        android:id="@+id/jobdesp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Job Application"
+        android:textSize="34dp"
+        android:textStyle="bold"
+        android:textColor="#002AFA"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/job_name"
+        android:hint="Full Name"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_below="@id/jobdesp"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/contact_number"
+        android:hint="Age"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_below="@id/job_name"
+        android:ems="3"
+        android:inputType="number"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/user_email"
+        android:hint="Email ID"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_below="@id/contact_number"
+        android:inputType="textEmailAddress"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/user_pswd"
+        android:hint="Password"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_below="@id/user_email"
+        android:inputType="textPassword"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvrd"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:text="Do you want to relocate?"
+        android:layout_below="@id/user_pswd"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        />
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rddgroup"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_below="@+id/tvrd"
+        android:orientation="horizontal"
+        >
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rdyes"
+            android:text="Yes"
+            />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rdno"
+            android:text="No"
+            />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rdns"
+            android:text="Not Sure"
+            />
+    </RadioGroup>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvchk"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:text="Skills"
+        android:layout_below="@id/rddgroup"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/check_java"
+        android:text="JAVA"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_below="@id/tvchk"
+        />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/check_php"
+        android:text="PHP"
+        android:layout_below="@id/tvchk"
+        android:layout_toRightOf="@id/check_java"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        />
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/check_android"
+        android:text="Android"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_below="@id/tvchk"
+        android:layout_toRightOf="@id/check_php"
+        />
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/check_other"
+        android:text="Others"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_below="@id/tvchk"
+        android:layout_toRightOf="@id/check_android"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvspn"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:text="Qualification"
+        android:layout_below="@id/check_other"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        />
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner_job"
+        android:layout_below="@id/tvspn"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/submit"
+        android:text="Submit"
+        android:layout_below="@id/spinner_job"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="40dp"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_clear"
+        android:text="Clear"
+        android:layout_below="@id/spinner_job"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@id/btnnext"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnnext"
+        android:text="Next"
+        android:layout_below="@id/spinner_job"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_toRightOf="@id/submit"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/res_result"
+        android:layout_marginTop="7dp"
+        android:textSize="16dp"
+        android:layout_below="@id/submit"
+        />
+
+</RelativeLayout>
+
+
+
+---------------------------------------------------------------------------------------------
+<!-- 
+Name- Shah Saud Ahmad
+Div - A
+Class - TYCS SEM 6
+Enrollment - E20110192000310095
+Subject - Fundamentals of Mobile Programming
+Aim-   Working with Intent Question: Implement intent in your “Job App” project
+Assignment - 5 -
+Pc no- 54
+Faculty name - Maghavi Dave
+Date - 27-02-2023
+-->
+----------------------java file city-----------------------------------------------------------
+
+
+package com.example.crude;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.content.Intent;
+import android.graphics.Color;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+
+public class MainActivity_cities extends AppCompatActivity {
+
+    EditText edit_text;
+    ListView list_view;
+    Button btn_add, btn_edit, btn_remove , btn_preview;
+    String getcity=null, msg;
+    public int index;
+    
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main_cities2);
+        edit_text =findViewById(R.id.edt);
+        list_view =findViewById(R.id.lv);
+        btn_add =findViewById(R.id.btnadd);
+        btn_edit =findViewById(R.id.btnedit);
+        btn_preview =findViewById(R.id.btnprevious);
+
+        Intent ine=getIntent();
+        String name=ine.getStringExtra("name");
+        int age=ine.getIntExtra("age",11);
+        String skills=ine.getStringExtra("skills");
+
+        Toast.makeText(this, name+""+age+""+skills, Toast.LENGTH_SHORT).show();
+
+        ArrayList arrlist=new ArrayList<String>();
+        ArrayAdapter<String> adp=new ArrayAdapter<>(this, android.R.layout.simple_expandable_list_item_1,arrlist);
+        list_view.setAdapter(adp);
+        getcity= edit_text.getText().toString();
+
+        btn_preview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent inej=new Intent(MainActivity_cities.this,MainActivity.class);
+                startActivity(inej);
+            }
+        });
+
+        btn_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getcity= edit_text.getText().toString();
+                if(getcity.equals(""))
+                {
+                    getToast("Enter city");
+                }
+                else
+                {
+                    arrlist.add(getcity);
+                    adp.notifyDataSetChanged();
+                    getToast(getcity);
+                    edit_text.setText(null);
+                }
+            }
+        });
+
+        btn_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(getcity.equals(""))
+                {
+                    getToast("Enter the value in City");
+                }
+                else
+                {
+                    msg= edit_text.getText().toString();
+                    arrlist.set(index,msg);
+                    adp.notifyDataSetChanged();
+                    getToast(msg);
+                }
+            }
+        });
+
+
+        list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                list_view.getChildAt(i).setBackgroundColor(Color.BLUE);
+                msg= list_view.getItemAtPosition(i).toString();
+                getToast(msg);
+                edit_text.setText(msg);
+                index=i;
+            }
+        });
+
+        list_view.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+        {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l)
+            {
+                msg= list_view.getItemAtPosition(i).toString();
+                arrlist.remove(i);
+                adp.notifyDataSetChanged();
+                getToast(msg);
+                return false;
+            }
+        });
+
+    }
+    public void getToast(String arg)
+    {
+        Toast.makeText(this, arg.toString(), Toast.LENGTH_SHORT).show();
+    }
+}
+
+-------------------------------------------------------------------------------------
+<!-- 
+Name- Shah Saud Ahmad
+Div - A
+Class - TYCS SEM 6
+Enrollment - E20110192000310095
+Subject - Fundamentals of Mobile Programming
+Aim-   Working with Intent Question: Implement intent in your “Job App” project
+Assignment - 5 -
+Pc no- 54
+Faculty name - Maghavi Dave
+Date - 27-02-2023
+-->
+--------------------------------------Xml file--------------------------------------------------------
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity_cities">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/edt"
+        android:hint="City"
+        android:layout_marginTop="40dp"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnadd"
+        android:text="ADD"
+        android:layout_marginStart="100dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="120dp"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnedit"
+        android:layout_marginStart="200dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="120dp"
+        android:layout_toRightOf="@id/check_java"
+        android:text="EDIT"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnprevious"
+        android:layout_marginStart="150dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="170dp"
+        android:text="Previous"
+        />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lv"
+        android:layout_marginTop="220dp"
+        />
+
+</RelativeLayout>
